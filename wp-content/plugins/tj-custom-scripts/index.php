@@ -18,7 +18,6 @@ class tjWPScripts {
     if (is_page('about-us')) {
       $scriptTimeStamp = filemtime(plugin_dir_path(__FILE__) . 'build/index.js');
       wp_enqueue_script( 'tj-custom-scripts', plugin_dir_url(__FILE__) . 'build/index.js', array(), $scriptTimeStamp, true );
-
     }
   }
 }

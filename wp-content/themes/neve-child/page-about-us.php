@@ -11,21 +11,36 @@ get_header();
 
 ?>
 <div class="<?php echo esc_attr( $container_class ); ?> single-page-container">
-<h1>Custom</h1>
-<div id="tj-app-container"></div>
-<?php 
-  $world = get_field('worldwide');
 
-  wp_add_inline_script( 
-    'tj-custom-scripts', 
-    'const tjDataFromWP = ' . json_encode( 
-      $world,
-      JSON_NUMERIC_CHECK
-    ), 
-    'before' 
-  );
+  <?php 
+    
+    // BEGIN CUSTOMIZATION
 
-?>
+  ?>
+
+  <h1 class="size-small pad-top">I added a custom heading to the PHP template</h1>
+
+  <div id="tj-app-container"></div>
+
+  <?php 
+    $world = get_field('worldwide');
+
+    // ***
+    // The below function exposes data to your custom script in the const variable "tjDataFromWP"
+    // ***
+    wp_add_inline_script( 
+      'tj-custom-scripts', 
+      'const tjDataFromWP = ' . json_encode( 
+        $world,
+        JSON_NUMERIC_CHECK
+      ), 
+      'before' 
+    );
+
+    // END CUSTOMIZATION
+
+  ?>
+
 	<div class="row">
 		<?php do_action( 'neve_do_sidebar', 'single-page', 'left' ); ?>
 		<div class="nv-single-page-wrap col">
